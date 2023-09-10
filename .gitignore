@@ -128,3 +128,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Parcel build files and cache difrctory
+dist/
+.parcel-cache/
+
+# Don't include .env, which might have sensitive information
+.env
