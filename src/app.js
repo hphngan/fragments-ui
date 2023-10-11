@@ -47,28 +47,28 @@ async function init() {
   // Disable the Login button
   loginBtn.disabled = true;
 
-  /**
-   * when user submit the text, post that text and get all user text
-   */
+  // Submit event handler
   const fragmentForm = document.querySelector('form');
   fragmentForm.addEventListener('submit', postFunction);
 
   async function postFunction(e) {
     try{
       e.preventDefault();
-      console.log('fragment from index.html: ' + document.getElementById('textFragment').value);
 
-      // Creates a new fragment
+      // Creates a new fragment from user
       await postFragment(user, document.getElementById('textFragment').value);
 
       // Gets user's fragments
       const fragment = await getUserFragments(user);
+
+      // Log fragment data for debugging purposes
       console.log('fragment data: ', {fragment});
 
       // Gets fragments' data
       if (!!fragment) {
         const getfragmentData = fragment.fragments.map(async (fragmentId, idx) => {
           return await getFragmentById(user, fragmentId).then((fragmentData) => {
+            // Log fragment data for debugging purposes
             console.log(`post ${fragmentData}`)
             return `${idx + 1}: ${fragmentData}`;
           });
@@ -76,10 +76,10 @@ async function init() {
 
         const fragmentData = await Promise.all(getfragmentData);
 
-        // Display all fragments
+        // Display fragments
         fragmentSection.querySelector('.fragment').innerText = fragmentData.join('\n');
 
-        // Input box
+        // Clear input box
         document.getElementById('textFragment').value = '';
       }
     } catch (error) {
