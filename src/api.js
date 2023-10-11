@@ -1,8 +1,7 @@
 // src/api.js
 
 // fragments microservice API, defaults to localhost:8080
-const apiUrl = process.env.API_URL || 'http://localhost:8080';
-//const apiUrl = process.env.API_URL;
+const apiUrl = process.env.API_URL;
 
 /**
  * Given an authenticated user, request all fragments for this user from the
