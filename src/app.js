@@ -26,7 +26,9 @@ async function init() {
   const user = await getUser();
 
    // Do an authenticated request to the fragments API server and log the result
-   getUserFragments(user);
+   //getUserFragments(user);
+   const expandedFragments = await getUserFragments(user, 1);
+  console.log(" user's existing fragments with all metadata: ", expandedFragments);
   
 
   if (!user) {
@@ -47,16 +49,29 @@ async function init() {
   // Disable the Login button
   loginBtn.disabled = true;
 
-  // Submit event handler
-  const fragmentForm = document.querySelector('form');
+  document.getElementById('fragmentType').addEventListener('change', (e) => {
+    e.preventDefault();
+
+    selectedType = e.target.value;
+    console.log(`seleted type: ${selectedType}`);
+  });
+
+  let selectedType = 'text/plain';
+
+  let fragmentForm = document.getElementById('fragmentForm');
   fragmentForm.addEventListener('submit', postFunction);
 
   async function postFunction(e) {
-    try{
       e.preventDefault();
+    try{
+      console.log(
+        `User input manually: ${document.getElementById('textFragment').value}`
+      );
 
-      // Creates a new fragment from user
-      await postFragment(user, document.getElementById('textFragment').value);
+      const textFragment = document.getElementById('textFragment').value;
+        console.log(selectedType);
+      // Create a new fragment for the user
+      await postFragment(user, textFragment, selectedType);
 
       // Gets user's fragments
       const fragment = await getUserFragments(user);
@@ -65,19 +80,22 @@ async function init() {
       console.log('fragment data: ', {fragment});
 
       // Gets fragments' data
-      if (!!fragment) {
+      if (fragment) {
         const getfragmentData = fragment.fragments.map(async (fragmentId, idx) => {
           return await getFragmentById(user, fragmentId).then((fragmentData) => {
             // Log fragment data for debugging purposes
-            console.log(`post ${fragmentData}`)
-            return `${idx + 1}: ${fragmentData}`;
+            return `${idx + 1}: fragment's data: ${
+              fragmentData[1]
+            }`;
           });
         });
 
         const fragmentData = await Promise.all(getfragmentData);
 
+        console.log('all fragment data', fragmentData);
+
         // Display fragments
-        fragmentSection.querySelector('.fragment').innerText = fragmentData.join('\n');
+        document.querySelector('.fragment').innerText = fragmentData.join('\n');
 
         // Clear input box
         document.getElementById('textFragment').value = '';

@@ -17,7 +17,14 @@
 
     <section id="fragment">
       <form id="fragmentForm">
-        <label for="textFragment">Enter some text:</label><br />
+        <label for="fragmentType">Choose a fragment type:</label>
+        <select id="fragmentType" name="fragmentType">
+          <option value="text/plain">text/plain</option>
+          <option value="text/markdown">text/markdown</option>
+          <option value="text/html">text/html</option>
+          <option value="application/json">application/json</option>
+        </select><br/><br/>
+        <label for="textFragment">Enter your fragment:</label><br />
         <input
           type="text"
           id="textFragment"

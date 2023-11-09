@@ -1,0 +1,25 @@
+# dev tools, config
+.github/
+.vscode/
+.git/
+.gitignore
+.prettier*
+.eslintrc*
+*.md
+
+# ignore the dependencies
+node_modules/ 
+
+# Output of 'npm pack'
+*.tgz
+
+# env
+# env/
+#.env*
+
+# Include the license so we don't break the license/copyright
+!LICENSE.md
+
+# Build/generated files/folders
+.parcel-cache/
+dist/
