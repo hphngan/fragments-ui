@@ -27,7 +27,7 @@ ARG OAUTH_SIGN_IN_REDIRECT_URL=http://localhost:1234
 # OAuth Sign-Out Redirect URL (use the port for your fragments-ui web app)
 ARG OAUTH_SIGN_OUT_REDIRECT_URL=http://localhost:1234
 
-ARG API_URL=http://localhost:8080
+ARG API_URL=http://ec2-54-221-26-54.compute-1.amazonaws.com:8080
 
 # Set environment variables for AWS Cognito settings
 ENV AWS_COGNITO_POOL_ID=$AWS_COGNITO_POOL_ID

@@ -40,8 +40,9 @@ export async function getFragmentById(user, id, ext = '') {
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
-    const data = await res.text();
+    const data = await res.text()
     const contentType = res.headers.get('content-type');
+    console.log('API Response Data:', data);
     if (contentType.includes('text/')) {
       console.log(`Got user fragments ${contentType} data with given id: ${data}`);
       return [contentType, data];
