@@ -15,28 +15,135 @@
       <h2>Hello <span class="username"></span>!</h2>
     </section>
 
-    <section id="fragment">
+    <section id="fragmentCreate">
       <form id="fragmentForm">
         <label for="fragmentType">Choose a fragment type:</label>
+
         <select id="fragmentType" name="fragmentType">
           <option value="text/plain">text/plain</option>
           <option value="text/markdown">text/markdown</option>
           <option value="text/html">text/html</option>
           <option value="application/json">application/json</option>
-        </select><br/><br/>
-        <label for="textFragment">Enter your fragment:</label><br />
-        <input
-          type="text"
-          id="textFragment"
-          name="textFragment"
-          placeholder="Enter your fragment here"
-        /><br />
-        <br/>
-        <input type="submit" value="Submit" />
+          <option value="image/png">image/png</option>
+          <option value="image/jpeg">image/jpeg</option>
+          <option value="image/webp">image/webp</option>
+          <option value="image/gif">image/gif</option>
+        </select>
+        
+        <br/><br/>
 
-        <h2>Your fragments:</h2>
-        <p class="fragment"></p>
+        <form id="fragmentForm">
+          <label for="textFragment">Enter your text fragment:</label>
+
+          <input
+            type="text"
+            id="textFragment"
+            name="textFragment"
+            placeholder="Enter your text fragment here"
+          />
+
+          <br/><br/>
+
+          <label for="imageFragment">Upload your image fragment:</label>
+          <input
+            type="file"
+            id="imageFragment"
+            placeholder="Upload your image fragment here"
+          />
+
+          <br/><br/>
+
+          <input type="submit" value="Submit" id="submitBtn"/>
+        </form>
+      </section>
+
+        
+
+        <section hidden id="fragmentUpdate">
+          <form id="fragmentFormUpdate">
+            <label for="fragmentTypeUpdate">Choose a fragment type:</label>
+    
+            <select id="fragmentTypeUpdate" name="fragmentType">
+              <option value="text/plain">text/plain</option>
+              <option value="text/markdown">text/markdown</option>
+              <option value="text/html">text/html</option>
+              <option value="application/json">application/json</option>
+              <option value="image/png">image/png</option>
+              <option value="image/jpeg">image/jpeg</option>
+              <option value="image/webp">image/webp</option>
+              <option value="image/gif">image/gif</option>
+            </select>
+            
+            <br/><br/>
+    
+            <form id="fragmentFormUpdate">
+              <label for="textFragmentUpdate">Enter your text fragment:</label>
+    
+              <input
+                type="text"
+                id="textFragmentUpdate"
+                name="textFragmentUpdate"
+                placeholder="Enter your text fragment here"
+              />
+    
+              <br/><br/>
+    
+              <label for="imageFragmentUpdate">Upload your image fragment:</label>
+              <input
+                type="file"
+                id="imageFragmentUpdate"
+                placeholder="Upload your image fragment here"
+              />
+    
+              <br/><br/>
+    
+              <input type="submit" value="SubmitUpdate" id="submitUpdateBtn" />
+            </form>
+          </section>
+
+
+          <section hidden id="fragmentConvert">
+            <form id="fragmentFormConvert">
+              <label for="fragmentTypeConvert">Choose a fragment type:</label>
+      
+              <select id="fragmentTypeConvert" name="fragmentType">
+                <option value="txt">text/plain</option>
+                <option value="md">text/markdown</option>
+                <option value="html">text/html</option>
+                <option value="json">application/json</option>
+                <option value="png">image/png</option>
+                <option value="jpg">image/jpeg</option>
+                <option value="webp">image/webp</option>
+                <option value="gif">image/gif</option>
+              </select>
+              <br/><br/>
+              <input type="submit" value="SubmitConvert" />
+            </form>
+            
+            <h2>Your converted fragments:</h2> 
+            <section id="fragmentConvertDisplay">
+              <img id="fragmentConvertImage" />
+            </section>
+          </section>
+        
+          <h2>Your fragments:</h2>
+          <section id="fragmentDisplay">
+            <select id="fragmentDropdown">
+  
+            </select> 
+          </section>
+
+          <section hidden id="fragmentInfoDisplay">
+            <br/>
+          </section>
+          <br/><br/>
+        <button id="createBtn">Create</button> &nbsp;&nbsp;
+        <button id="displayBtn">Display</button> &nbsp;&nbsp;
+        <button id="convertBtn">Convert</button> &nbsp;&nbsp;
+        <button id="updateBtn">Update</button> &nbsp;&nbsp;
+        <button id="deleteBtn">Delete</button>
+
       </form>
-    </section>
+    
   </body>
 </html>
