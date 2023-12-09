@@ -65,6 +65,11 @@ async function init() {
   let fragmentForm = document.getElementById('fragmentForm');
   fragmentForm.addEventListener('submit', postFunction);
   let selectedType;
+  var fileCreate;
+  let fileCreateType;
+  let fileUpdate;
+  let fileTypeUpdate;
+
   
   document.getElementById('fragmentType').addEventListener('change', (e) => {
     e.preventDefault();
@@ -85,7 +90,7 @@ async function init() {
       fileCreateType = fileCreate.type;
     });
   });
-
+  
   async function postFunction(e) {
     e.preventDefault();
   try{
@@ -116,12 +121,11 @@ async function init() {
     console.log('fragment data: ', {fragment});
 
     // Update fragments' list
-    if (fragment) {
+    
       await updateFragmentList();
 
       // Clear input box
       document.getElementById('textFragment').value = '';
-    }
   } catch (error) {
     console.log(error);
     }
@@ -195,12 +199,13 @@ async function init() {
     }
   }
 
+
   function populateUpdateForm(fragmentData) {
     const type = document.getElementById('fragmentTypeUpdate');
     const textInput = document.getElementById('textFragmentUpdate');
     textInput.innerHTML = '';
     const fileInput = document.getElementById('imageFragmentUpdate');
-    id = fragmentData.id;
+    let id = fragmentData.id;
     type.value = fragmentData.ContentType;
     type.disabled = true;
 
@@ -264,12 +269,12 @@ async function init() {
       console.log('fragment data: ', {fragment});
 
       // Gets fragments' data
-      if (fragment) {
+      
         await updateFragmentList();
 
         // Clear input box
         document.getElementById('textFragment').value = '';
-      }
+      
     } catch (error) {
       console.log(error);
       }

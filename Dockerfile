@@ -1,7 +1,6 @@
 # Base image to use
 FROM node:18.13.0 AS dependencies
 
-
 LABEL maintainer="Phuong Ngan Huynh <phuynh22@myseneca.ca>"
 LABEL description="Fragments-UI node.js microservice"
 
@@ -27,7 +26,7 @@ ARG OAUTH_SIGN_IN_REDIRECT_URL=http://localhost:1234
 # OAuth Sign-Out Redirect URL (use the port for your fragments-ui web app)
 ARG OAUTH_SIGN_OUT_REDIRECT_URL=http://localhost:1234
 
-ARG API_URL=http://ec2-54-221-26-54.compute-1.amazonaws.com:8080
+ARG API_URL=http://fragments-load-balancer-1416756098.us-east-1.elb.amazonaws.com:8080
 
 # Set environment variables for AWS Cognito settings
 ENV AWS_COGNITO_POOL_ID=$AWS_COGNITO_POOL_ID
